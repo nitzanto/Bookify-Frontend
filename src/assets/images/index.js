@@ -11,6 +11,11 @@ import coffeeShops from "./3d-fluency-coffee-to-go.png";
 import thumbnailBackground from "./thumbnail-background.svg";
 import diningTogether from "./3d-hygge-isometric-view-of-young-girl-and-young-man-having-dinner-together-1.png";
 
+import rickAndMorty from "./rickandmorty.jpg";
+import spongebobAndPatrick from "./spongebobandpatrick.jpg";
+import peterAndBrian from "./peterandbrian.jpg";
+import finnAndJake from "./finnAndJake.jpg";
+
 export {
   coffeeShops,
   bookifyLogo,
@@ -20,6 +25,9 @@ export {
   diningTogether,
   customer1,
   customer2,
-  offer,
   thumbnailBackground,
+  rickAndMorty,
+  spongebobAndPatrick,
+  peterAndBrian,
+  finnAndJake,
 };
