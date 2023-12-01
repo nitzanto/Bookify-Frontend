@@ -4,6 +4,7 @@ import { statistics } from "../constants";
 import { Button } from "../components";
 import { arrowRight } from "../assets/icons";
 import bookify3d from "../assets/images/bookify3d.png";
+
 const Hero = () => {
   return (
     <section
@@ -22,7 +23,9 @@ const Hero = () => {
           Today.
         </p>
 
-        <Button label="Book now" iconURL={arrowRight} />
+        <a href="#restaurants">
+          <Button label="Book now" iconURL={arrowRight} />
+        </a>
 
         <div className="flex justify-start items-start flex-wrap w-full mt-20 gap-16">
           {statistics.map((stat, index) => (
