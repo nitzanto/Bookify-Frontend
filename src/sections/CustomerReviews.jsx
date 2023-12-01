@@ -1,5 +1,6 @@
 import { ReviewCard } from "../components";
 import { reviews } from "../constants";
+import { customersReviews } from "../assets/images/index.js";
 
 const CustomerReviews = () => {
   return (
@@ -9,6 +10,7 @@ const CustomerReviews = () => {
         <span className="text-blue-500"> Customers </span>
         Say?
       </h3>
+
       <p className="m-auto mt-4 max-w-lg  text-center info-text">
         Hear genuine stories from our satisfied customers about their
         exceptional experiences with us.

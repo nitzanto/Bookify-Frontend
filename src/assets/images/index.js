@@ -9,7 +9,7 @@ import asianFood from "./3d-fluency-salmon-sushi.png";
 import coffeeShops from "./3d-fluency-coffee-to-go.png";
 
 import thumbnailBackground from "./thumbnail-background.svg";
-import diningTogether from "./3d-hygge-isometric-view-of-young-girl-and-young-man-having-dinner-together-1.png";
+import diningTogether from "./looney-accept-cookies.gif";
 
 import rickAndMorty from "./rickandmorty.jpg";
 import spongebobAndPatrick from "./spongebobandpatrick.jpg";

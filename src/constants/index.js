@@ -27,8 +27,8 @@ export const navLinks = [
 ];
 
 export const statistics = [
-  { value: "500+", label: "Restaurants" },
-  { value: "250k+", label: "Customers" },
+  { value: "500+", label: "🍴 Restaurants" },
+  { value: "250k+", label: "😀 Customers" },
 ];
 
 export const kitchens = [
