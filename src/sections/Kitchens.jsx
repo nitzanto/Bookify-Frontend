@@ -1,4 +1,4 @@
-import { products } from "../constants";
+import { kitchens } from "../constants";
 import { Kitchen } from "../components";
 
 const Kitchens = () => {
@@ -14,8 +14,8 @@ const Kitchens = () => {
       </div>
 
       <div className="mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-6 gap-14">
-        {products.map((product) => (
-          <Kitchen key={product.name} {...product} />
+        {kitchens.map((kitchen) => (
+          <Kitchen key={kitchen.name} {...kitchen} />
         ))}
       </div>
     </section>

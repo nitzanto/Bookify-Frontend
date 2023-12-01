@@ -26,24 +26,12 @@ export const navLinks = [
   { href: "#contact-us", label: "Contact Us" },
 ];
 
-export const kitchens = [
-  {
-    bigShoe: asianFood,
-  },
-  {
-    bigShoe: americanFood,
-  },
-  {
-    bigShoe: italianFood,
-  },
-];
-
 export const statistics = [
   { value: "500+", label: "Restaurants" },
   { value: "250k+", label: "Customers" },
 ];
 
-export const products = [
+export const kitchens = [
   {
     imgURL: asianFood,
     name: "Asian",
