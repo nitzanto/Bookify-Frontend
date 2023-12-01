@@ -10,8 +10,8 @@ const Footer = () => {
             <img
               src={bookifyLogo}
               alt="logo"
-              width={368}
-              height={368}
+              width={184}
+              height={184}
               className="m-0"
             />
           </a>
