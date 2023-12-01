@@ -1,4 +1,4 @@
-const Kitchen = ({ imgURL, name, price }) => {
+const Kitchen = ({ imgURL, name }) => {
   return (
     <div className="relative bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105">
       <img src={imgURL} alt={name} className="w-full h-auto object-cover" />
