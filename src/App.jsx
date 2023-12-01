@@ -6,6 +6,7 @@ import {
   Services,
   Kitchens,
   SuperQuality,
+  TopRestaurants,
 } from "./sections";
 
 const App = () => {
@@ -14,6 +15,9 @@ const App = () => {
       <Nav />
       <section className="xl:padding-l wide:padding-r padding-b">
         <Hero />
+      </section>
+      <section className="padding">
+        <TopRestaurants />
       </section>
       <section className="padding">
         <Kitchens />
