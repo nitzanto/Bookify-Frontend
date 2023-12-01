@@ -12,7 +12,11 @@ import {
   coffeeShops,
   customer1,
   customer2,
+  finnAndJake,
   italianFood,
+  peterAndBrian,
+  rickAndMorty,
+  spongebobAndPatrick,
 } from "../assets/images";
 
 export const navLinks = [
@@ -43,22 +47,45 @@ export const products = [
   {
     imgURL: asianFood,
     name: "Asian",
-    price: "$200.20",
   },
   {
     imgURL: americanFood,
     name: "American",
-    price: "$210.20",
   },
   {
     imgURL: italianFood,
     name: "Italian Food",
-    price: "$220.20",
   },
   {
     imgURL: coffeeShops,
     name: "Coffee Shops",
-    price: "$230.20",
+  },
+];
+
+export const restaurants = [
+  {
+    imgURL: spongebobAndPatrick,
+    name: "Krusty Krab",
+    description:
+      "Explore the maritime flavors of Krusty Krab's American-style cuisine through Bookify – a delectable journey of seafood, burgers, and classic comforts.",
+  },
+  {
+    imgURL: rickAndMorty,
+    name: "Szechuan Sushi Galaxy",
+    description:
+      "Embark on an interdimensional sushi adventure at Szechuan Sushi Galaxy, where each roll is a cosmic blend of traditional Asian flavors, served with a side of multiversal charm.",
+  },
+  {
+    imgURL: finnAndJake,
+    name: "Pasta Enchantment",
+    description:
+      "Indulge in a culinary journey at Marceline's Pasta Enchantment, an Italian haven, where every dish is crafted with a sprinkle of vampire magic and a dash of mathematical perfection.",
+  },
+  {
+    imgURL: peterAndBrian,
+    name: "Quagmire's Brew Haven",
+    description:
+      "Quagmire's Brew Haven, the coffee shop in Family Guy, where every cup is as bold as Peter, as smooth as Lois, and as full of surprises as Stewie's schemes.",
   },
 ];
 
