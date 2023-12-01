@@ -111,8 +111,7 @@ export const reviews = [
     customerName: "Mr Krabs 🦀",
     rating: 5.0,
     feedback:
-      "Five stars, aye! ⭐⭐⭐⭐⭐ I'll be returnin' for more reservations and, hopefully, more customers fillin' the tables at the Krusty Krab! Bookify gets the Krabs seal of approval!\"\n" +
-      "\n",
+      "Five stars, aye! ⭐⭐⭐⭐⭐ I'll be returnin' for more reservations and, hopefully, more customers fillin' the tables at the Krusty Krab! Bookify gets the Krabs seal of approval!",
   },
 ];
 
