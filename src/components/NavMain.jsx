@@ -2,9 +2,9 @@ import { menu, user } from "../assets/icons";
 import bookifyLogo from "../assets/images/bookify-logo.png";
 import { navLinks } from "../constants";
 
-const Nav = () => {
+const NavMain = () => {
   return (
-    <header className="padding-x mt-[-40px] z-10">
+    <header className="padding-x mt-[-40px] absolute z-10 w-full">
       <nav className="flex justify-between items-center max-container">
         <a href="/">
           <img
@@ -42,4 +42,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default NavMain;
