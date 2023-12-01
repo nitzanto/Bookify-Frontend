@@ -20,7 +20,7 @@ import {
 } from "../assets/images";
 
 export const navLinks = [
-  { href: "#home", label: "Home" },
+  { href: "/", label: "Home" },
   { href: "#about-us", label: "About Us" },
   { href: "#kitchens", label: "Kitchens" },
   { href: "#restaurants", label: "Top Restaurants" },
