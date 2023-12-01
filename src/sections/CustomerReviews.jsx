@@ -1,6 +1,5 @@
 import { ReviewCard } from "../components";
 import { reviews } from "../constants";
-import { customersReviews } from "../assets/images/index.js";
 
 const CustomerReviews = () => {
   return (
