@@ -1,10 +1,29 @@
 import { menu, user } from "../assets/icons";
 import bookifyLogo from "../assets/images/bookify-logo.png";
 import { navLinks } from "../constants";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import axios from "axios";
 
-const Nav = () => {
+const NavMain = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check for the presence of the authentication cookie
+  useEffect(() => {
+    const isAuthenticated = Cookies.get("Authentication");
+    setIsLoggedIn(!!isAuthenticated);
+  }, []);
+
+  const handleSignOut = async () => {
+    const response = await axios.get("http://34.160.44.153/auth/logout", {
+      withCredentials: true,
+    });
+    setIsLoggedIn(false);
+  };
+
   return (
-    <header className="padding-x mt-[-40px] z-10">
+    <header className="padding-x mt-[-40px] z-10 w-full">
       <nav className="flex justify-between items-center max-container">
         <a href="/">
           <img
@@ -27,13 +46,6 @@ const Nav = () => {
             </li>
           ))}
         </ul>
-        <div className="flex gap-2 text-lg leading-normal font-medium font-montserrat max-lg:hidden wide:mr-24">
-          <a href="/">
-            <img src={user} width={25} height={25} alt="user icon" />
-          </a>
-          <span></span>
-          <a href="/">Sign in</a>
-        </div>
         <div className="hidden max-lg:block">
           <img src={menu} alt="hamburger icon" width={25} height={25} />
         </div>
@@ -42,4 +54,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default NavMain;
