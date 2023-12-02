@@ -1,13 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import restaurantsData from "../data/restaurantsData.js";
 import Nav from "./Nav.jsx";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const RestaurantPage = () => {
   const { id } = useParams();
   const [restaurant, setRestaurant] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+  const navigate = useNavigate();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check for the presence of the authentication cookie
+  useEffect(() => {
+    const isAuthenticated = Cookies.get("Authentication");
+    setIsLoggedIn(!!isAuthenticated);
+  }, []);
 
   useEffect(() => {
     // Find the restaurant with the matching id
@@ -23,6 +35,20 @@ const RestaurantPage = () => {
   };
 
   const handleReservation = () => {
+    if (!isLoggedIn) {
+      Swal.fire({
+        title: "Not Logged In",
+        text: "You must be logged in to make a reservation.",
+        icon: "warning",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Login",
+      }).then((result) => {
+        // If the user clicks on "Login", navigate to the login page
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      });
+    }
     // Perform reservation logic using selectedDate
     // For now, just log the selected date to the console
     console.log("Reservation for:", selectedDate);

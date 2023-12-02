@@ -1,7 +1,6 @@
 import { menu, user } from "../assets/icons";
 import bookifyLogo from "../assets/images/bookify-logo.png";
 import { navLinks } from "../constants";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
