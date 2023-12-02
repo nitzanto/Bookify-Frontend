@@ -1,5 +1,4 @@
 import { diningTogether } from "../assets/images";
-import { Button } from "../components";
 
 const SuperQuality = () => {
   return (

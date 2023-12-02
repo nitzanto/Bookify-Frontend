@@ -1,5 +1,5 @@
-import { restaurants } from "../constants";
 import { TopRestaurant } from "../components";
+import restaurantsData from "../data/restaurantsData.js";
 
 const TopRestaurants = () => {
   return (
@@ -15,7 +15,7 @@ const TopRestaurants = () => {
       </div>
 
       <div className="mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-6 gap-14">
-        {restaurants.map((restaurant) => (
+        {restaurantsData.map((restaurant) => (
           <TopRestaurant key={restaurant.name} {...restaurant} />
         ))}
       </div>
