@@ -1,6 +1,7 @@
 import { menu, user } from "../assets/icons";
 import bookifyLogo from "../assets/images/bookify-logo.png";
 import { navLinks } from "../constants";
+import { Link } from "react-router-dom";
 
 const NavMain = () => {
   return (
@@ -32,7 +33,7 @@ const NavMain = () => {
             <img src={user} width={25} height={25} alt="user icon" />
           </a>
           <span></span>
-          <a href="/">Sign in</a>
+          <Link to="/login">Sign in</Link>
         </div>
         <div className="hidden max-lg:block">
           <img src={menu} alt="hamburger icon" width={25} height={25} />
