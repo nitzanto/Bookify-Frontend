@@ -5,6 +5,7 @@ import ServiceCard from "./ServiceCard";
 import ReviewCard from "./ReviewCard";
 import TopRestaurant from "./TopRestaurant.jsx";
 import Nav from "./Nav";
+import LoginPage from "./LoginPage.jsx";
 
 export {
   Button,
@@ -14,4 +15,5 @@ export {
   ReviewCard,
   TopRestaurant,
   Nav,
+  LoginPage,
 };
