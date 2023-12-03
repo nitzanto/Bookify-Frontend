@@ -1,6 +1,6 @@
 import { diningTogether } from "../assets/images";
 
-const SuperQuality = () => {
+const AboutUs = () => {
   return (
     <section
       id="about-us"
@@ -33,4 +33,4 @@ const SuperQuality = () => {
   );
 };
 
-export default SuperQuality;
+export default AboutUs;
