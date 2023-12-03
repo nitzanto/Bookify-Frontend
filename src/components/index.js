@@ -1,11 +1,12 @@
 import Button from "./Button";
-import NavMain from "./NavMain.jsx";
-import Kitchen from "./Kitchen.jsx";
+import NavMain from "./NavMain";
+import Kitchen from "./Kitchen";
 import ServiceCard from "./ServiceCard";
 import ReviewCard from "./ReviewCard";
-import TopRestaurant from "./TopRestaurant.jsx";
+import TopRestaurant from "./TopRestaurant";
 import Nav from "./Nav";
-import LoginPage from "./LoginPage.jsx";
+import LoginPage from "./LoginPage";
+import SignUp from "./SignUp";
 
 export {
   Button,
@@ -16,4 +17,5 @@ export {
   TopRestaurant,
   Nav,
   LoginPage,
+  SignUp,
 };
