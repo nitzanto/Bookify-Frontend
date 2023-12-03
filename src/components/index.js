@@ -7,6 +7,7 @@ import TopRestaurant from "./TopRestaurant";
 import Nav from "./Nav";
 import LoginPage from "./LoginPage";
 import SignUp from "./SignUp";
+import OrderComplete from "./OrderComplete.jsx";
 
 export {
   Button,
@@ -18,4 +19,5 @@ export {
   Nav,
   LoginPage,
   SignUp,
+  OrderComplete,
 };

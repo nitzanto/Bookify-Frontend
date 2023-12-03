@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import RestaurantPage from "./components/RestaurantPage";
 import App from "./App.jsx";
-import { LoginPage, SignUp } from "./components/index.js";
+import { LoginPage, OrderComplete, SignUp } from "./components/index.js";
 import { NotFound } from "./libs/common/index.js";
 
 const AppRouter = () => {
@@ -12,6 +12,7 @@ const AppRouter = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/restaurant/:id" element={<RestaurantPage />} />
+        <Route path="/order/:id" element={<OrderComplete />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
