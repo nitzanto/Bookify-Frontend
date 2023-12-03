@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { bookifyLogo } from "../assets/images/index.js";
-import Cookies from "js-cookie";
-import { AUTH_SERVICE_LOGIN, USER_SERVICE } from "../libs/common/index.js";
-import zxcvbn from "zxcvbn"; // Importing the zxcvbn package
+import { authenticate, USER_SERVICE } from "../libs/common/index.js";
+import zxcvbn from "zxcvbn";
 
 const SignUp = () => {
   const [credentials, setCredentials] = useState({
@@ -24,20 +23,6 @@ const SignUp = () => {
     setPasswordStrength(zxcvbn(newPassword).score); // Update password strength
   };
 
-  const handleLogin = async () => {
-    try {
-      const response = await axios.post(AUTH_SERVICE_LOGIN, credentials, {
-        withCredentials: true,
-      });
-
-      const jwtToken = response.data;
-      Cookies.set("Authentication", jwtToken);
-      navigate("/");
-    } catch (error) {
-      setErrorMessage("Invalid credentials. Please try again.");
-    }
-  };
-
   const handleSignUp = async () => {
     const passwordScore = zxcvbn(credentials.password);
 
@@ -54,7 +39,8 @@ const SignUp = () => {
         },
       });
 
-      await handleLogin();
+      await authenticate();
+      navigate("/");
     } catch (error) {
       setErrorMessage(error.response.data.message);
     }

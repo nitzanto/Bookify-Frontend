@@ -1,7 +1,7 @@
 import { statistics } from "../libs/common/index.js";
 import { Button } from "../components";
 import { arrowRight } from "../assets/icons";
-import bookify3d from "../assets/images/bookify3d.png";
+import { bookify3d } from "../assets/images/index.js";
 
 const Hero = () => {
   return (

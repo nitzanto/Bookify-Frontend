@@ -5,7 +5,11 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { RESERVATIONS_SERVICE, restaurantsData } from "../libs/common/index.js";
+import {
+  RESERVATIONS_SERVICE,
+  restaurantsData,
+  showLoadingAlert,
+} from "../libs/common/index.js";
 import { LoadingAnimated, customer1 } from "../assets/images/index.js";
 
 const RestaurantPage = () => {
@@ -13,7 +17,6 @@ const RestaurantPage = () => {
   const [restaurant, setRestaurant] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // Add loading state
   const navigate = useNavigate();
   let invoiceId;
 
@@ -52,36 +55,43 @@ const RestaurantPage = () => {
           navigate("/login");
         }
       });
-    }
-
-    const reservationData = {
-      startDate: "02-01-2021",
-      endDate: "02-01-2023",
-      charge: {
-        amount: 199,
-        card: {
-          cvc: "413",
-          exp_month: 12,
-          exp_year: 2027,
-          number: "4242 4242 4242 4242",
+    } else {
+      const reservationData = {
+        startDate: "02-01-2021",
+        endDate: "02-01-2023",
+        charge: {
+          amount: 199,
+          card: {
+            cvc: "413",
+            exp_month: 12,
+            exp_year: 2027,
+            number: "4242 4242 4242 4242",
+          },
         },
-      },
-    };
+      };
 
-    try {
-      const jwtToken = Cookies.get("Authentication");
-      const response = await axios.post(RESERVATIONS_SERVICE, reservationData, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          Authentication: `${jwtToken}`,
-        },
-      });
+      try {
+        const jwtToken = Cookies.get("Authentication");
+        const loadingAlert = showLoadingAlert();
+        const response = await axios.post(
+          RESERVATIONS_SERVICE,
+          reservationData,
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json",
+              Authentication: `${jwtToken}`,
+            },
+          },
+        );
 
-      invoiceId = response.data.invoiceId;
-      console.log("Reservation successful");
-    } catch (error) {
-      console.error("Reservation error:", error);
+        invoiceId = response.data.invoiceId;
+        loadingAlert.close();
+        navigate(`/order/${invoiceId}`);
+        console.log("Reservation successful");
+      } catch (error) {
+        console.error("Reservation error:", error);
+      }
     }
   };
 
@@ -137,23 +147,7 @@ const RestaurantPage = () => {
               className={`mt-4 px-4 py-2 bg-blue-500 text-white rounded ${
                 isButtonEnabled ? "" : "opacity-50 cursor-not-allowed"
               }`}
-              onClick={async () => {
-                // Show loading spinner using SweetAlert
-                const loadingAlert = Swal.fire({
-                  title: "Loading...",
-                  imageUrl: LoadingAnimated,
-                  allowOutsideClick: false,
-                  showConfirmButton: false,
-                });
-
-                // Wait for the reservation to complete
-                await handleReservation();
-
-                // Close the loading spinner SweetAlert
-                loadingAlert.close();
-
-                navigate(`/order/${invoiceId}`);
-              }}
+              onClick={handleReservation}
               disabled={!isButtonEnabled}
             >
               Reserve Table

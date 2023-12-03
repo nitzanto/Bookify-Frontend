@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { bookifyLogo } from "../assets/images/index.js";
 import { authenticate, testUser } from "../libs/common/index.js";
 
-const LoginPage = () => {
+const Login = () => {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -96,4 +96,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

@@ -30,6 +30,7 @@ export {
   customer1,
   customer2,
   thumbnailBackground,
+  bookify3d,
   rickAndMorty,
   spongebobAndPatrick,
   peterAndBrian,
