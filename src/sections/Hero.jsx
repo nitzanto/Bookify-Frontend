@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { statistics } from "../libs/common/index.js";
 import { Button } from "../components";
 import { arrowRight } from "../assets/icons";

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import restaurantsData from "../libs/common/data/restaurantsData.js";
+import { useParams } from "react-router-dom";
 import Nav from "./Nav.jsx";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { RESERVATIONS_SERVICE } from "../libs/common/index.js";
+import { RESERVATIONS_SERVICE, restaurantsData } from "../libs/common/index.js";
 
 const RestaurantPage = () => {
   const { id } = useParams();

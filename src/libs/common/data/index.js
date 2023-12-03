@@ -1,2 +1,2 @@
 export * from "./mainData";
-export * from "./restaurantsData";
+export * from "./restaurantsData.js";

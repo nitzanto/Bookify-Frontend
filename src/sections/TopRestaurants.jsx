@@ -1,5 +1,5 @@
 import { TopRestaurant } from "../components";
-import restaurantsData from "../libs/common/data/restaurantsData.js";
+import { restaurantsData } from "../libs/common/index.js";
 
 const TopRestaurants = () => {
   return (

@@ -7,7 +7,7 @@ import {
 
 import { v4 as uuidv } from "uuid";
 
-const restaurantsData = [
+export const restaurantsData = [
   {
     id: uuidv(),
     name: "Krusty Krab 🦀",
@@ -69,5 +69,3 @@ const restaurantsData = [
     ],
   },
 ];
-
-export default restaurantsData;
