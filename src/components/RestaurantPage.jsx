@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { RESERVATIONS_SERVICE, restaurantsData } from "../libs/common/index.js";
 import { LoadingAnimated, customer1 } from "../assets/images/index.js";
+import { v4 as uuidv } from "uuid";
 
 const RestaurantPage = () => {
   const { id } = useParams();
@@ -149,6 +150,8 @@ const RestaurantPage = () => {
 
                 // Close the loading spinner SweetAlert
                 loadingAlert.close();
+
+                navigate(`/order/${uuidv()}`);
               }}
               disabled={!isButtonEnabled}
             >
