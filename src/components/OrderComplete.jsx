@@ -28,11 +28,11 @@ const OrderComplete = () => {
             alt="Email Sent"
             className="w-48 h-48 mx-auto mb-4"
           />
-          <h1 className="text-4xl font-bold text-blue-500 mb-4">
-            Email Verification Sent
-          </h1>
+          <h1 className="text-4xl font-bold text-blue-500 mb-4">Email Sent</h1>
           <p className="text-lg text-gray-700">
-            We have sent you an email for verification. Please check your inbox.
+            We have sent you an email with the{" "}
+            <span className="font-bold">reservation details.</span> Please check
+            your inbox.
           </p>
         </div>
 
