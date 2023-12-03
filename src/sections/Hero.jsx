@@ -1,5 +1,4 @@
-import { statistics } from "../libs/common/index.js";
-import { Button } from "../components";
+import { Button, statistics } from "../libs/common/index.js";
 import { arrowRight } from "../assets/icons";
 import { bookify3d } from "../assets/images/index.js";
 

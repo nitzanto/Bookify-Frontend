@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import RestaurantPage from "./components/RestaurantPage";
+import RestaurantPage from "./components/restaurant/RestaurantPage.jsx";
 import App from "./App.jsx";
 import { Login, OrderComplete, SignUp } from "./components/index.js";
 import { NotFound } from "./libs/common/index.js";

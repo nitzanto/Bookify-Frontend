@@ -1,14 +1,14 @@
-import { menu, user } from "../assets/icons";
-import bookifyLogo from "../assets/images/bookify-logo.png";
-import { navLinks } from "../libs/common/index.js";
+import { menu, user } from "../../../assets/icons/index.js";
+import bookifyLogo from "../../../assets/images/bookify-logo.png";
+import { navLinks } from "../index.js";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { AUTH_SERVICE_LOGOUT } from "../libs/common/index.js";
+import { AUTH_SERVICE_LOGOUT } from "../index.js";
 
-const NavMain = () => {
+const Nav = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Check for the presence of the authentication cookie
@@ -59,7 +59,7 @@ const NavMain = () => {
   };
 
   return (
-    <header className="padding-x mt-[-40px] z-10 w-full">
+    <header className="padding-x mt-[-40px] absolute z-10 w-full">
       <nav className="flex justify-between items-center max-container">
         <a href="/">
           <img
@@ -101,4 +101,4 @@ const NavMain = () => {
   );
 };
 
-export default NavMain;
+export default Nav;

@@ -1,4 +1,4 @@
-import { star } from "../assets/icons";
+import { star } from "../../assets/icons/index.js";
 import { Link } from "react-router-dom";
 
 const TopRestaurant = ({ imgURL, name, description, rating, id }) => {

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Nav from "./Nav.jsx";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import {
+  Nav,
   RESERVATIONS_SERVICE,
   restaurantsData,
   showLoadingAlert,
-} from "../libs/common/index.js";
-import { LoadingAnimated, customer1 } from "../assets/images/index.js";
+} from "../../libs/common/index.js";
+import { LoadingAnimated, customer1 } from "../../assets/images/index.js";
 
 const RestaurantPage = () => {
   const { id } = useParams();

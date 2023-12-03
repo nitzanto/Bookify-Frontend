@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { bookifyLogo, EmailAnimated } from "../assets/images/index.js";
+import { bookifyLogo, EmailAnimated } from "../../assets/images/index.js";
 
 const OrderComplete = () => {
   return (

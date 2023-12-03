@@ -1,4 +1,3 @@
-import { NavMain } from "./components";
 import {
   CustomerReviews,
   Footer,
@@ -8,11 +7,12 @@ import {
   SuperQuality,
   TopRestaurants,
 } from "./sections";
+import { Nav } from "./libs/common/index.js";
 
 const App = () => {
   return (
     <main className="relative">
-      <NavMain />
+      <Nav />
       <section className="xl:padding-l wide:padding-r padding-b">
         <Hero />
       </section>

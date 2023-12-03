@@ -1,11 +1,9 @@
 import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { bookifyLogo } from "../assets/images/index.js";
-import { authenticate, USER_SERVICE } from "../libs/common/index.js";
-import zxcvbn from "zxcvbn";
+import { Link, useNavigate } from "react-router-dom";
+import { bookifyLogo } from "../../assets/images/index.js";
+import { authenticate, testUser } from "../../libs/common/index.js";
 
-const SignUp = () => {
+const Login = () => {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -14,35 +12,23 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState(""); // State for error message
-  const [passwordStrength, setPasswordStrength] = useState(0); // State for password strength
 
   const handleChange = (e) => {
-    const newPassword = e.target.value;
-    setCredentials({ ...credentials, [e.target.name]: newPassword });
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
     setErrorMessage(""); // Clear error message on input change
-    setPasswordStrength(zxcvbn(newPassword).score); // Update password strength
   };
 
-  const handleSignUp = async () => {
-    const passwordScore = zxcvbn(credentials.password);
+  const handleTestUser = () => {
+    setCredentials(testUser);
+  };
 
-    if (passwordScore.score < 2) {
-      setErrorMessage("Please choose a stronger password.");
-      return;
-    }
+  const handleLogin = async () => {
+    const isAuthenticated = await authenticate(credentials);
 
-    try {
-      const response = await axios.post(USER_SERVICE, credentials, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      await authenticate();
+    if (isAuthenticated) {
       navigate("/");
-    } catch (error) {
-      setErrorMessage(error.response.data.message);
+    } else {
+      setErrorMessage("Invalid credentials. Please try again.");
     }
   };
 
@@ -52,7 +38,7 @@ const SignUp = () => {
         <img src={bookifyLogo} alt="Logo" className="w-48 h-48 mb-8" />
       </a>
       <div className="bg-white p-8 shadow-md rounded-md max-w-md w-full">
-        <h2 className="text-3xl font-bold mb-6 text-center">Sign Up</h2>
+        <h2 className="text-3xl font-bold mb-6 text-center">Login</h2>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-600">
             Email:
@@ -78,30 +64,36 @@ const SignUp = () => {
             className="mt-1 p-3 border rounded-md w-full"
             placeholder="Enter your password"
           />
-          {credentials.password && (
-            <p
-              className={`text-sm ${
-                passwordStrength === 4 ? "text-green-500" : "text-red-500"
-              } mt-2`}
-            >
-              Password Strength: {passwordStrength === 4 ? "Strong" : "Weak"}
-            </p>
-          )}
         </div>
         {errorMessage && (
           <p className="text-red-500 mb-4 text-center">{errorMessage}</p>
         )}
         <div className="flex space-x-4">
           <button
-            onClick={handleSignUp}
+            onClick={handleLogin}
             className="bg-blue-500 text-white px-4 py-2 rounded-md flex-1"
           >
-            Sign Up
+            Login
           </button>
+          <button
+            onClick={handleTestUser}
+            className="bg-green-500 text-white px-4 py-2 rounded-md flex-1"
+          >
+            Test User
+          </button>
+        </div>
+
+        <div className="mt-4 text-center">
+          <p className="text-gray-600">
+            Are you new?{" "}
+            <Link className="text-blue-500 underline" to="/signup">
+              Sign up here
+            </Link>
+          </p>
         </div>
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default Login;
