@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
+import axios from "axios";
+import { AUTH_SERVICE_LOGOUT } from "../libs/common/index.js";
 
 const NavMain = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,15 +31,28 @@ const NavMain = () => {
       confirmButtonText: "Yes, logout!",
     });
 
+    console.log("jwtToken: ", jwtToken);
     if (shouldLogout.isConfirmed) {
       // Clear the JWT token from cookies
+      const res = await axios.post(
+        AUTH_SERVICE_LOGOUT,
+        {},
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+            Authentication: `${jwtToken}`,
+          },
+        },
+      );
+
       Cookies.remove("Authentication");
 
       // Set user as not logged in
       setIsLoggedIn(false);
 
       // Show a success message after logout
-      Swal.fire({
+      await Swal.fire({
         title: "Logged Out!",
         icon: "success",
       });

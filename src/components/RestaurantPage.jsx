@@ -5,6 +5,8 @@ import Nav from "./Nav.jsx";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
+import { RESERVATIONS_SERVICE } from "../libs/common/index.js";
 
 const RestaurantPage = () => {
   const { id } = useParams();
@@ -34,7 +36,7 @@ const RestaurantPage = () => {
     setIsButtonEnabled(true);
   };
 
-  const handleReservation = () => {
+  const handleReservation = async () => {
     if (!isLoggedIn) {
       Swal.fire({
         title: "Not Logged In",
@@ -49,10 +51,35 @@ const RestaurantPage = () => {
         }
       });
     }
-    // Perform reservation logic using selectedDate
-    // For now, just log the selected date to the console
-    console.log("Reservation for:", selectedDate);
-    // You can add more reservation handling logic here
+
+    const reservationData = {
+      startDate: "02-01-2021",
+      endDate: "02-01-2023",
+      charge: {
+        amount: 199,
+        card: {
+          cvc: "413",
+          exp_month: 12,
+          exp_year: 2027,
+          number: "4242 4242 4242 4242",
+        },
+      },
+    };
+
+    try {
+      const jwtToken = Cookies.get("Authentication");
+      const response = await axios.post(RESERVATIONS_SERVICE, reservationData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          Authentication: `${jwtToken}`,
+        },
+      });
+
+      console.log("Reservation successful");
+    } catch (error) {
+      console.error("Reservation error:", error);
+    }
   };
 
   if (!restaurant) {
