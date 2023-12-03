@@ -9,8 +9,8 @@ import {
   RESERVATIONS_SERVICE,
   restaurantsData,
   showLoadingAlert,
+  useAuthentication,
 } from "../../libs/common/index.js";
-import { LoadingAnimated, customer1 } from "../../assets/images/index.js";
 
 const RestaurantPage = () => {
   const { id } = useParams();
@@ -20,13 +20,7 @@ const RestaurantPage = () => {
   const navigate = useNavigate();
   let invoiceId;
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // Check for the presence of the authentication cookie
-  useEffect(() => {
-    const isAuthenticated = Cookies.get("Authentication");
-    setIsLoggedIn(!!isAuthenticated);
-  }, []);
+  const { isLoggedIn } = useAuthentication();
 
   useEffect(() => {
     // Find the restaurant with the matching id

@@ -1,23 +1,17 @@
 import { menu, user } from "../../../assets/icons/index.js";
-import bookifyLogo from "../../../assets/images/bookify-logo.png";
-import { navLinks } from "../index.js";
+import { navLinks, useAuthentication } from "../index.js";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { AUTH_SERVICE_LOGOUT } from "../index.js";
+import { bookifyLogo } from "../../../assets/images/index.js";
 
 const Nav = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
   const isMainPage = location.pathname === "/";
-
-  // Check for the presence of the authentication cookie
-  useEffect(() => {
-    const isAuthenticated = Cookies.get("Authentication");
-    setIsLoggedIn(!!isAuthenticated);
-  }, []);
+  const { isLoggedIn, setIsLoggedIn } = useAuthentication();
 
   const handleSignOut = async () => {
     const jwtToken = Cookies.get("Authentication"); // Retrieve the JWT token from cookies
