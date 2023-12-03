@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { bookifyLogo } from "../assets/images/index.js";
 import Cookies from "js-cookie";
+import { AUTH_SERVICE_LOGIN } from "../libs/common/index.js";
 
 const LoginPage = () => {
   const [credentials, setCredentials] = useState({
@@ -21,8 +22,9 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
+      console.log(AUTH_SERVICE_LOGIN);
       const response = await axios.post(
-        "http://34.160.44.153/auth/login",
+        AUTH_SERVICE_LOGIN,
         {
           email: credentials.email,
           password: credentials.password,
