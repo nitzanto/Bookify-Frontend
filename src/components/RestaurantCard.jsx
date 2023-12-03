@@ -1,4 +1,4 @@
-const RestaurantCard = ({ imgURL, changeBigShoeImage, bigShoeImg }) => {
+const RestaurantCard = ({ imgURL, changeRestaurantImg, restaurantImg }) => {
   const handleClick = () => {
     if (bigShoeImg !== imgURL.restaurantImg) {
       changeBigShoeImage(imgURL.restaurantImg);
