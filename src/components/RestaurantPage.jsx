@@ -6,12 +6,14 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { RESERVATIONS_SERVICE, restaurantsData } from "../libs/common/index.js";
+import { LoadingAnimated, customer1 } from "../assets/images/index.js";
 
 const RestaurantPage = () => {
   const { id } = useParams();
   const [restaurant, setRestaurant] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Add loading state
   const navigate = useNavigate();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -133,7 +135,21 @@ const RestaurantPage = () => {
               className={`mt-4 px-4 py-2 bg-blue-500 text-white rounded ${
                 isButtonEnabled ? "" : "opacity-50 cursor-not-allowed"
               }`}
-              onClick={handleReservation}
+              onClick={async () => {
+                // Show loading spinner using SweetAlert
+                const loadingAlert = Swal.fire({
+                  title: "Loading...",
+                  imageUrl: LoadingAnimated,
+                  allowOutsideClick: false,
+                  showConfirmButton: false,
+                });
+
+                // Wait for the reservation to complete
+                await handleReservation();
+
+                // Close the loading spinner SweetAlert
+                loadingAlert.close();
+              }}
               disabled={!isButtonEnabled}
             >
               Reserve Table

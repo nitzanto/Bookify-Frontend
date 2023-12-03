@@ -17,6 +17,7 @@ import peterAndBrian from "./peterandbrian.jpg";
 import finnAndJake from "./finnAndJake.jpg";
 
 import NotFoundAnimated from "./jelly-living-numbers-four-hundred-and-four.gif";
+import LoadingAnimated from "./looney-hands-holding-pizza-slices.gif";
 
 export {
   coffeeShops,
@@ -33,4 +34,5 @@ export {
   peterAndBrian,
   finnAndJake,
   NotFoundAnimated,
+  LoadingAnimated,
 };
