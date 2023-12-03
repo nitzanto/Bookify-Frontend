@@ -1,14 +1,14 @@
 const RestaurantCard = ({ imgURL, changeRestaurantImg, restaurantImg }) => {
   const handleClick = () => {
-    if (bigShoeImg !== imgURL.restaurantImg) {
-      changeBigShoeImage(imgURL.restaurantImg);
+    if (bigRestaurantImg !== imgURL.restaurantImg) {
+      changeRestaurantImg(imgURL.restaurantImg);
     }
   };
 
   return (
     <div
       className={`border-2 rounded-xl ${
-        bigShoeImg === imgURL.restaurantImg
+        bigRestaurantImg === imgURL.restaurantImg
           ? "border-coral-red"
           : "border-transparent"
       } cursor-pointer max-sm:flex-1`}
