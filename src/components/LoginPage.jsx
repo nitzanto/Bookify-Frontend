@@ -1,20 +1,13 @@
-import React, { useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { bookifyLogo } from "../assets/images/index.js";
-import Cookies from "js-cookie";
-import { AUTH_SERVICE_LOGIN } from "../libs/common/index.js";
+import { authenticate, testUser } from "../libs/common/index.js";
 
 const LoginPage = () => {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
-
-  const testUser = {
-    email: "bookify@gmail.com",
-    password: "Password123!",
-  };
 
   const navigate = useNavigate();
 
@@ -30,21 +23,11 @@ const LoginPage = () => {
   };
 
   const handleLogin = async () => {
-    try {
-      const response = await axios.post(AUTH_SERVICE_LOGIN, credentials, {
-        withCredentials: true,
-      });
+    const isAuthenticated = await authenticate(credentials);
 
-      // Access the cookies from the response headers
-      const jwtToken = response.data;
-
-      // Save the JWT token using js-cookie
-      Cookies.set("Authentication", jwtToken);
-
-      // Redirect to the home page upon successful login
+    if (isAuthenticated) {
       navigate("/");
-    } catch (error) {
-      console.log(error);
+    } else {
       setErrorMessage("Invalid credentials. Please try again.");
     }
   };

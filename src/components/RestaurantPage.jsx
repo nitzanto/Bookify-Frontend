@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { RESERVATIONS_SERVICE, restaurantsData } from "../libs/common/index.js";
 import { LoadingAnimated, customer1 } from "../assets/images/index.js";
-import { v4 as uuidv } from "uuid";
 
 const RestaurantPage = () => {
   const { id } = useParams();
@@ -16,6 +15,7 @@ const RestaurantPage = () => {
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false); // Add loading state
   const navigate = useNavigate();
+  let invoiceId;
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -78,6 +78,7 @@ const RestaurantPage = () => {
         },
       });
 
+      invoiceId = response.data.invoiceId;
       console.log("Reservation successful");
     } catch (error) {
       console.error("Reservation error:", error);
@@ -151,7 +152,7 @@ const RestaurantPage = () => {
                 // Close the loading spinner SweetAlert
                 loadingAlert.close();
 
-                navigate(`/order/${uuidv()}`);
+                navigate(`/order/${invoiceId}`);
               }}
               disabled={!isButtonEnabled}
             >
