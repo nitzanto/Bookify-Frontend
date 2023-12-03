@@ -4,7 +4,7 @@ import {
   Hero,
   Services,
   Kitchens,
-  SuperQuality,
+  AboutUs,
   TopRestaurants,
 } from "./sections";
 import { Nav } from "./libs/common/index.js";
@@ -23,7 +23,7 @@ const App = () => {
         <Kitchens />
       </section>
       <section className="padding">
-        <SuperQuality />
+        <AboutUs />
       </section>
       <section className="padding-x py-10">
         <Services />
