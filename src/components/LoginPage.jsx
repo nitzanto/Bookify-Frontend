@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { bookifyLogo } from "../assets/images/index.js";
 import Cookies from "js-cookie";
 import { AUTH_SERVICE_LOGIN } from "../libs/common/index.js";
@@ -31,7 +31,6 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      console.log(AUTH_SERVICE_LOGIN);
       const response = await axios.post(AUTH_SERVICE_LOGIN, credentials, {
         withCredentials: true,
       });
@@ -99,6 +98,15 @@ const LoginPage = () => {
           >
             Test User
           </button>
+        </div>
+
+        <div className="mt-4 text-center">
+          <p className="text-gray-600">
+            Are you new?{" "}
+            <Link className="text-blue-500 underline" to="/signup">
+              Sign up here
+            </Link>
+          </p>
         </div>
       </div>
     </div>
