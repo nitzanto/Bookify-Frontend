@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import RestaurantPage from "./components/RestaurantPage";
 import App from "./App.jsx";
 import { LoginPage, SignUp } from "./components/index.js";
+import { NotFound } from "./libs/common/index.js";
 
 const AppRouter = () => {
   return (
@@ -11,6 +12,7 @@ const AppRouter = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/restaurant/:id" element={<RestaurantPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

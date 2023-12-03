@@ -16,6 +16,8 @@ import spongebobAndPatrick from "./spongebobandpatrick.jpg";
 import peterAndBrian from "./peterandbrian.jpg";
 import finnAndJake from "./finnAndJake.jpg";
 
+import NotFoundAnimated from "./jelly-living-numbers-four-hundred-and-four.gif";
+
 export {
   coffeeShops,
   bookifyLogo,
@@ -30,4 +32,5 @@ export {
   spongebobAndPatrick,
   peterAndBrian,
   finnAndJake,
+  NotFoundAnimated,
 };
