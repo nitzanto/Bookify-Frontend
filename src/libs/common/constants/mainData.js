@@ -5,19 +5,15 @@ import {
   secure,
   starStruck,
   twitter,
-} from "../assets/icons";
+} from "../../../assets/icons/index.js";
 import {
   americanFood,
   asianFood,
   coffeeShops,
   customer1,
   customer2,
-  finnAndJake,
   italianFood,
-  peterAndBrian,
-  rickAndMorty,
-  spongebobAndPatrick,
-} from "../assets/images";
+} from "../../../assets/images/index.js";
 
 export const navLinks = [
   { href: "/", label: "Home" },

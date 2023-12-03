@@ -1,4 +1,4 @@
-import { kitchens } from "../constants";
+import { kitchens } from "../libs/common/index.js";
 import { Kitchen } from "../components";
 
 const Kitchens = () => {

@@ -1,5 +1,5 @@
 import { bookifyLogo } from "../assets/images";
-import { footerLinks, socialMedia } from "../constants";
+import { footerLinks, socialMedia } from "../libs/common/index.js";
 
 const Footer = () => {
   return (
