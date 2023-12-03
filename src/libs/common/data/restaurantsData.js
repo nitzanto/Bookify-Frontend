@@ -3,7 +3,7 @@ import {
   peterAndBrian,
   rickAndMorty,
   spongebobAndPatrick,
-} from "../assets/images/index.js";
+} from "../../../assets/images/index.js";
 
 import { v4 as uuidv } from "uuid";
 

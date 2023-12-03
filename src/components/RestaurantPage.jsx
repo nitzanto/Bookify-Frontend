@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import restaurantsData from "../data/restaurantsData.js";
+import restaurantsData from "../libs/common/data/restaurantsData.js";
 import Nav from "./Nav.jsx";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
