@@ -1,7 +1,7 @@
 import { menu, user } from "../../../assets/icons/index.js";
 import bookifyLogo from "../../../assets/images/bookify-logo.png";
 import { navLinks } from "../index.js";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
@@ -10,6 +10,8 @@ import { AUTH_SERVICE_LOGOUT } from "../index.js";
 
 const Nav = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation();
+  const isMainPage = location.pathname === "/";
 
   // Check for the presence of the authentication cookie
   useEffect(() => {
@@ -59,7 +61,11 @@ const Nav = () => {
   };
 
   return (
-    <header className="padding-x mt-[-40px] absolute z-10 w-full">
+    <header
+      className={`padding-x mt-[-40px] ${
+        isMainPage ? "absolute" : ""
+      } z-10 w-full`}
+    >
       <nav className="flex justify-between items-center max-container">
         <a href="/">
           <img
