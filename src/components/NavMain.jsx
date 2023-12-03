@@ -31,7 +31,6 @@ const NavMain = () => {
       confirmButtonText: "Yes, logout!",
     });
 
-    console.log("jwtToken: ", jwtToken);
     if (shouldLogout.isConfirmed) {
       // Clear the JWT token from cookies
       const res = await axios.post(
