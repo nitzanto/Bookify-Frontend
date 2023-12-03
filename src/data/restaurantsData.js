@@ -16,7 +16,7 @@ const restaurantsData = [
     imgURL: spongebobAndPatrick,
     rating: 4.5,
     location: "123 Ocean Avenue",
-    cuisine: "Seafood",
+    cuisine: "American",
     reservationDates: [
       new Date("2023-12-01T12:00:00"), // Add more dates as needed
       new Date("2023-12-02T18:30:00"),
@@ -30,8 +30,8 @@ const restaurantsData = [
     rating: 5,
     description:
       "Embark on an interdimensional sushi adventure at Szechuan Sushi Galaxy, where each roll is a cosmic blend of traditional Asian flavors, served with a side of multiversal charm.",
-    location: "456 Olive Street",
-    cuisine: "Italian",
+    location: "456 Galaxy Station",
+    cuisine: "Asian",
     reservationDates: [
       new Date("2023-12-03T20:00:00"),
       new Date("2023-12-04T14:15:00"),
@@ -46,7 +46,7 @@ const restaurantsData = [
     description:
       "Indulge in a culinary journey at Marceline's Pasta Enchantment, an Italian haven, where every dish is crafted with a sprinkle of vampire magic and a dash of mathematical perfection.",
     location: "789 Pepper Plaza",
-    cuisine: "Spicy",
+    cuisine: "Italian",
     reservationDates: [
       new Date("2023-12-02T19:45:00"),
       new Date("2023-12-04T16:00:00"),
@@ -61,7 +61,7 @@ const restaurantsData = [
     description:
       "Quagmire's Brew Haven, the coffee shop in Family Guy, where every cup is as bold as Peter, as smooth as Lois, and as full of surprises as Stewie's schemes.",
     location: "789 Quagmire Avenue",
-    cuisine: "Spicy",
+    cuisine: "Coffee Shop",
     reservationDates: [
       new Date("2023-12-02T19:45:00"),
       new Date("2023-12-04T16:00:00"),
