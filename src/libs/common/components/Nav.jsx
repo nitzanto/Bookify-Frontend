@@ -1,10 +1,6 @@
 import { menu, user } from "../../../assets/icons/index.js";
-import { navLinks, useAuthentication } from "../index.js";
+import { logoutUser, navLinks, useAuthentication } from "../index.js";
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
-import Swal from "sweetalert2";
-import axios from "axios";
 import { AUTH_SERVICE_LOGOUT } from "../index.js";
 import { bookifyLogo } from "../../../assets/images/index.js";
 
@@ -14,44 +10,7 @@ const Nav = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuthentication();
 
   const handleSignOut = async () => {
-    const jwtToken = Cookies.get("Authentication"); // Retrieve the JWT token from cookies
-
-    // Show a SweetAlert confirmation before logging out
-    const shouldLogout = await Swal.fire({
-      title: "Logout",
-      text: "Are you sure you want to log out?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, logout!",
-    });
-
-    if (shouldLogout.isConfirmed) {
-      // Clear the JWT token from cookies
-      const res = await axios.post(
-        AUTH_SERVICE_LOGOUT,
-        {},
-        {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
-            Authentication: `${jwtToken}`,
-          },
-        },
-      );
-
-      Cookies.remove("Authentication");
-
-      // Set user as not logged in
-      setIsLoggedIn(false);
-
-      // Show a success message after logout
-      await Swal.fire({
-        title: "Logged Out!",
-        icon: "success",
-      });
-    }
+    await logoutUser(AUTH_SERVICE_LOGOUT, setIsLoggedIn);
   };
 
   return (
@@ -100,5 +59,4 @@ const Nav = () => {
     </header>
   );
 };
-
 export default Nav;

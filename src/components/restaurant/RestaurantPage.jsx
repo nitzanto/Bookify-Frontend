@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import axios from "axios";
 import {
+  createReservationData,
+  makeReservation,
   Nav,
   RESERVATIONS_SERVICE,
   restaurantsData,
-  showLoadingAlert,
   useAuthentication,
 } from "../../libs/common/index.js";
 
@@ -18,8 +17,6 @@ const RestaurantPage = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
   const navigate = useNavigate();
-  let invoiceId;
-
   const { isLoggedIn } = useAuthentication();
 
   useEffect(() => {
@@ -50,47 +47,28 @@ const RestaurantPage = () => {
         }
       });
     } else {
-      const reservationData = {
-        startDate: "02-01-2021",
-        endDate: "02-01-2023",
-        charge: {
-          amount: 199,
-          card: {
-            cvc: "413",
-            exp_month: 12,
-            exp_year: 2027,
-            number: "4242 4242 4242 4242",
-          },
-        },
-      };
+      const reservationData = createReservationData(
+        restaurant.id,
+        selectedDate,
+      );
 
       try {
-        const jwtToken = Cookies.get("Authentication");
-        const loadingAlert = showLoadingAlert();
-        const response = await axios.post(
-          RESERVATIONS_SERVICE,
+        const invoiceId = await makeReservation(
           reservationData,
-          {
-            withCredentials: true,
-            headers: {
-              "Content-Type": "application/json",
-              Authentication: `${jwtToken}`,
-            },
-          },
+          RESERVATIONS_SERVICE,
+          navigate,
         );
 
-        invoiceId = response.data.invoiceId;
-        loadingAlert.close();
         navigate(`/order/${invoiceId}`);
         console.log("Reservation successful");
       } catch (error) {
-        console.error("Reservation error:", error);
+        console.error("Error making reservation:", error);
       }
     }
   };
 
   if (!restaurant) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   return (
@@ -110,7 +88,6 @@ const RestaurantPage = () => {
               <span className="font-semibold">Cuisine:</span>{" "}
               {restaurant.cuisine}
             </p>
-            {/* Add more details as needed */}
 
             {/* Date selection */}
             <div className="mt-6">
@@ -154,7 +131,7 @@ const RestaurantPage = () => {
               <img
                 src={restaurant.imgURL}
                 alt={restaurant.name}
-                className="w-96 h-96 object-cover" // Adjust width and height here
+                className="w-96 h-96 object-cover"
               />
             </div>
           </div>
