@@ -11,6 +11,11 @@ const LoginPage = () => {
     password: "",
   });
 
+  const testUser = {
+    email: "bookify@gmail.com",
+    password: "Password123!",
+  };
+
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState(""); // State for error message
@@ -20,19 +25,16 @@ const LoginPage = () => {
     setErrorMessage(""); // Clear error message on input change
   };
 
+  const handleTestUser = () => {
+    setCredentials(testUser);
+  };
+
   const handleLogin = async () => {
     try {
       console.log(AUTH_SERVICE_LOGIN);
-      const response = await axios.post(
-        AUTH_SERVICE_LOGIN,
-        {
-          email: credentials.email,
-          password: credentials.password,
-        },
-        {
-          withCredentials: true,
-        },
-      );
+      const response = await axios.post(AUTH_SERVICE_LOGIN, credentials, {
+        withCredentials: true,
+      });
 
       // Access the cookies from the response headers
       const jwtToken = response.data;
@@ -84,12 +86,20 @@ const LoginPage = () => {
         {errorMessage && (
           <p className="text-red-500 mb-4 text-center">{errorMessage}</p>
         )}
-        <button
-          onClick={handleLogin}
-          className="bg-blue-500 text-white px-6 py-3 rounded-md w-full"
-        >
-          Login
-        </button>
+        <div className="flex space-x-4">
+          <button
+            onClick={handleLogin}
+            className="bg-blue-500 text-white px-4 py-2 rounded-md flex-1"
+          >
+            Login
+          </button>
+          <button
+            onClick={handleTestUser}
+            className="bg-green-500 text-white px-4 py-2 rounded-md flex-1"
+          >
+            Test User
+          </button>
+        </div>
       </div>
     </div>
   );
