@@ -75,13 +75,17 @@ const RestaurantPage = () => {
     <>
       <Nav />
       <div className="relative p-4 md:p-8">
-        <div className="max-w-full md:max-w-3xl mx-auto flex flex-col md:flex-row bg-white p-4 md:p-8 rounded-lg shadow-md">
+        <div className="max-w-full md:max-w-4xl mx-auto flex flex-col md:flex-row bg-white p-4 md:p-8 rounded-lg shadow-md">
           {/* Left side - Restaurant details */}
           <div className="flex-1 text-center md:text-left md:mr-4">
-            <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">
               {restaurant.name}
             </h1>
-            <p className="text-gray-600 mb-4">{restaurant.description}</p>
+
+            <div className="bg-gray-100 p-4 rounded-md mb-4">
+              <p className="text-gray-600">{restaurant.description}</p>
+            </div>
+
             <p className="text-gray-700">
               <span className="font-semibold">Location:</span>{" "}
               {restaurant.location}
@@ -117,7 +121,7 @@ const RestaurantPage = () => {
 
             {/* Reservation button */}
             <button
-              className={`mt-4 px-4 py-2 bg-blue-500 text-white rounded ${
+              className={`mt-4 px-6 py-3 bg-blue-500 text-white rounded ${
                 isButtonEnabled ? "" : "opacity-50 cursor-not-allowed"
               }`}
               onClick={handleReservation}
@@ -128,7 +132,7 @@ const RestaurantPage = () => {
           </div>
 
           {/* Right side - Restaurant image in a card */}
-          <div className="mt-4 md:mt-0">
+          <div className="mt-4 md:mt-0 flex-shrink-0">
             <div className="rounded-lg overflow-hidden shadow-md">
               <img
                 src={restaurant.imgURL}
