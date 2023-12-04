@@ -3,6 +3,7 @@ import { logoutUser, navLinks, useAuthentication } from "../index.js";
 import { Link, useLocation } from "react-router-dom";
 import { AUTH_SERVICE_LOGOUT } from "../index.js";
 import { bookifyLogo } from "../../../assets/images/index.js";
+import MobileNav from "./MobileNav.jsx";
 
 const Nav = () => {
   const location = useLocation();
@@ -52,9 +53,7 @@ const Nav = () => {
             <Link to="/login">Sign in</Link>
           )}
         </div>
-        <div className="hidden max-lg:block">
-          <img src={menu} alt="hamburger icon" width={25} height={25} />
-        </div>
+        <MobileNav isLoggedIn={isLoggedIn} handleSignOut={handleSignOut} />
       </nav>
     </header>
   );
