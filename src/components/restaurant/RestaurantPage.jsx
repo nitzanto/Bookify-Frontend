@@ -74,12 +74,14 @@ const RestaurantPage = () => {
   return (
     <>
       <Nav />
-      <div className="relative p-8">
-        <div className="max-w-3xl mx-auto flex bg-white p-8 rounded-lg shadow-md">
+      <div className="relative p-4 md:p-8">
+        <div className="max-w-full md:max-w-3xl mx-auto flex flex-col md:flex-row bg-white p-4 md:p-8 rounded-lg shadow-md">
           {/* Left side - Restaurant details */}
-          <div className="flex-1 text-center">
-            <h1 className="text-4xl font-bold mb-4">{restaurant.name}</h1>
-            <p className="text-gray-600 mb-6">{restaurant.description}</p>
+          <div className="flex-1 text-center md:text-left md:mr-4">
+            <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4">
+              {restaurant.name}
+            </h1>
+            <p className="text-gray-600 mb-4">{restaurant.description}</p>
             <p className="text-gray-700">
               <span className="font-semibold">Location:</span>{" "}
               {restaurant.location}
@@ -90,7 +92,7 @@ const RestaurantPage = () => {
             </p>
 
             {/* Date selection */}
-            <div className="mt-6">
+            <div className="mt-4">
               <p className="text-gray-700">
                 <span className="font-semibold">Available Dates:</span>
               </p>
@@ -98,7 +100,7 @@ const RestaurantPage = () => {
                 {restaurant.reservationDates.map((date) => (
                   <li
                     key={date.toISOString()}
-                    className="p-4 bg-blue-50 rounded-md hover:shadow-md transition"
+                    className="p-2 md:p-4 bg-blue-50 rounded-md hover:shadow-md transition"
                   >
                     <span
                       className={`font-semibold ${
@@ -126,12 +128,12 @@ const RestaurantPage = () => {
           </div>
 
           {/* Right side - Restaurant image in a card */}
-          <div className="flex-shrink-0 ml-8">
+          <div className="mt-4 md:mt-0">
             <div className="rounded-lg overflow-hidden shadow-md">
               <img
                 src={restaurant.imgURL}
                 alt={restaurant.name}
-                className="w-96 h-96 object-cover"
+                className="w-full h-64 md:h-96 object-cover"
               />
             </div>
           </div>
