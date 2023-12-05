@@ -1,4 +1,4 @@
-import { menu, user } from "../../../assets/icons/index.js";
+import { user } from "../../../assets/icons/index.js";
 import { logoutUser, navLinks, useAuthentication } from "../index.js";
 import { Link, useLocation } from "react-router-dom";
 import { AUTH_SERVICE_LOGOUT } from "../index.js";
