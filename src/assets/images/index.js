@@ -12,20 +12,12 @@ import thumbnailBackground from "./thumbnail-background.svg";
 import diningTogether from "./looney-accept-cookies.gif";
 
 import rickAndMorty from "./rickandmorty.jpg";
-import rickAndMorty1 from "./rickandmorty1.jpg";
-import rickAndMorty2 from "./rickandmorty2.jpg";
 
 import spongebobAndPatrick from "./spongebobandpatrick.jpg";
-import spongebobAndPatrick1 from "./spongebobandpatrick1.jpg";
-import spongebobAndPatrick2 from "./spongebobandpatrick2.jpg";
 
 import peterAndBrian from "./peterandbrian.jpg";
-import peterAndBrian1 from "./peterandbrian1.jpg";
-import peterAndBrian2 from "./peterandbrian2.jpg";
 
 import finnAndJake from "./finnAndJake.jpg";
-import finnAndJake1 from "./finnAndJake1.jpg";
-import finnAndJake2 from "./finnAndJake2.jpg";
 
 import NotFoundAnimated from "./jelly-living-numbers-four-hundred-and-four.gif";
 import LoadingAnimated from "./looney-hands-holding-pizza-slices.gif";
@@ -43,17 +35,9 @@ export {
   thumbnailBackground,
   bookify3d,
   rickAndMorty,
-  rickAndMorty1,
-  rickAndMorty2,
   spongebobAndPatrick,
-  spongebobAndPatrick1,
-  spongebobAndPatrick2,
   peterAndBrian,
-  peterAndBrian1,
-  peterAndBrian2,
   finnAndJake,
-  finnAndJake1,
-  finnAndJake2,
   NotFoundAnimated,
   LoadingAnimated,
   EmailAnimated,
