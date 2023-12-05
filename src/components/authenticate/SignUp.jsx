@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { bookifyLogo } from "../../assets/images/index.js";
 import { authenticate, USER_SERVICE } from "../../libs/common/index.js";
 import zxcvbn from "zxcvbn";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const [credentials, setCredentials] = useState({
@@ -32,15 +33,21 @@ const SignUp = () => {
     }
 
     try {
-      const response = await axios.post(USER_SERVICE, credentials, {
+      await axios.post(USER_SERVICE, credentials, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
         },
       });
 
-      await authenticate();
+      await authenticate(credentials);
       navigate("/");
+
+      Swal.fire({
+        icon: "success",
+        title: "Success!",
+        text: "Successfully signed up.",
+      });
     } catch (error) {
       setErrorMessage(error.response.data.message);
     }
@@ -87,6 +94,21 @@ const SignUp = () => {
               Password Strength: {passwordStrength === 4 ? "Strong" : "Weak"}
             </p>
           )}
+        </div>
+        <div className="bg-gray-200 p-4 rounded-md mb-6">
+          <p className="text-sm text-gray-700">
+            To create a strong password, consider including:
+            <ul className="list-disc pl-5">
+              <li>Uppercase and lowercase letters</li>
+              <li>Numbers</li>
+              <li>Special characters (e.g., !@#$%^&*)</li>
+              <li>At least 8 characters in length</li>
+              <li>
+                Avoid easily guessable information such as your name or common
+                words
+              </li>
+            </ul>
+          </p>
         </div>
         {errorMessage && (
           <p className="text-red-500 mb-4 text-center">{errorMessage}</p>
