@@ -3,9 +3,8 @@ import axios from "axios";
 // Function to fetch data from the Lambda function
 const fetchDataFromLambda = async () => {
   try {
-    const response = await axios.get(
-      "https://9mtvtmekre.execute-api.il-central-1.amazonaws.com/dev/restaurants",
-    );
+    const apiUrl = `${import.meta.env.VITE_RESTAURANTEER_API}`;
+    const response = await axios.get(apiUrl);
 
     return response.data;
   } catch (error) {
