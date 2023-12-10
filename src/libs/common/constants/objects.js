@@ -1,4 +1,4 @@
 export const testUser = {
-  email: "bookify@gmail.com",
-  password: "Password123!",
+  email: "bookify@testuser.bookify",
+  password: "Passwordd123!",
 };
