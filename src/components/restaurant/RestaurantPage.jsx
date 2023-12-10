@@ -7,15 +7,17 @@ import {
   makeReservation,
   Nav,
   RESERVATIONS_SERVICE,
-  restaurantsData,
   useAuthentication,
+  useRestaurantsData,
 } from "../../libs/common/index.js";
+import moment from "moment";
 
 const RestaurantPage = () => {
   const { id } = useParams();
   const [restaurant, setRestaurant] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+  const { data: restaurantsData, loading, error } = useRestaurantsData(); // Use the useRestaurantsData hook
   const navigate = useNavigate();
   const { isLoggedIn } = useAuthentication();
 
@@ -25,7 +27,7 @@ const RestaurantPage = () => {
 
     // Set the found restaurant in the state
     setRestaurant(foundRestaurant);
-  }, [id]);
+  }, [id, restaurantsData]);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -67,8 +69,14 @@ const RestaurantPage = () => {
     }
   };
 
-  if (!restaurant) {
-    return <div></div>;
+  if (loading || !restaurant) {
+    // Optionally, show a loading indicator while data is being fetched
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    // Optionally, handle the error state
+    return <div>Error fetching data: {error.message}</div>;
   }
 
   return (
@@ -103,7 +111,7 @@ const RestaurantPage = () => {
               <ul className="mt-2 space-y-2">
                 {restaurant.reservationDates.map((date) => (
                   <li
-                    key={date.toISOString()}
+                    key={moment(date).format("MMMM Do YYYY, h:mm:ss a")}
                     className="p-2 md:p-4 bg-blue-50 rounded-md hover:shadow-md transition"
                   >
                     <span
@@ -112,7 +120,7 @@ const RestaurantPage = () => {
                       }`}
                       onClick={() => handleDateChange(date)}
                     >
-                      {date.toLocaleString()}
+                      {moment(date).format("MMMM Do YYYY, h:mm:ss a")}
                     </span>
                   </li>
                 ))}
