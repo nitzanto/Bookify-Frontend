@@ -4,9 +4,13 @@ import { AUTH_SERVICE_LOGIN } from "../constants/index.js";
 
 export const authenticate = async (credentials) => {
   try {
-    const response = await axios.post(AUTH_SERVICE_LOGIN, credentials, {
-      withCredentials: true,
-    });
+    const response = await axios.post(
+      "https://g3apm55msb.execute-api.il-central-1.amazonaws.com/prod/restaurants",
+      credentials,
+      {
+        withCredentials: true,
+      },
+    );
 
     // Access the cookies from the response headers
     const jwtToken = response.data;
